@@ -12,11 +12,10 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Node10",
     "isolatedModules": true,
-    "rootDir": "src",
-    "types": ["bun-types"]
+    "rootDir": "src"
   },
   "include": [
     "src"
