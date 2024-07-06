@@ -2,6 +2,7 @@ import { mapValues, pick } from 'lodash'
 import React from 'react'
 import { useContinuousRef } from 'react-util/hooks'
 import { AnyFunction, isFunction, objectEquals } from 'ytil'
+
 import Store from './Store'
 import { State, StateExtract } from './types'
 
