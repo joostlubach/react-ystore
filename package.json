@@ -10,25 +10,39 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "lint": "eslint src --ext ts,tsx",
-    "check": "tsc --noEmit",
-    "test": "bun run test"
+    "build": "pnpm clean && pnpm build:tsc",
+    "build:tsc": "pnpm build:tsc:esm && pnpm build:tsc:cjs",
+    "build:tsc:esm": "tsc -p tsconfig.prod.json --module esnext --outDir dist/esm --declarationDir dist/types",
+    "build:tsc:cjs": "tsc -p tsconfig.prod.json --module commonjs --outDir dist/cjs --declaration false --declarationMap false",
+    "clean": "rimraf dist",
+    "lint": "eslint src --ext .ts,.tsx",
+    "check": "tsc -p . --noEmit",
+    "test": "NODE_ENV=test jest"
+  },
+  "peerDependencies": {
+    "mobx-react": "^7.6.0",
+    "react": "^18.0",
+    "react-dom": "^18.0"
   },
   "dependencies": {
-    "error-polyfill": "^0.1.3",
     "lodash": "^4.17.21",
-    "ms": "^2.1.3",
-    "react": "^18.3.1",
-    "react-util": "workspace:*",
-    "ytil": "workspace:*"
+    "logger": "workspace:^",
+    "mobx-react": "^7.6.0",
+    "react-timer": "workspace:^",
+    "react-util": "workspace:^",
+    "scroll-into-view": "^1.16.2",
+    "uuid": "^9.0.1",
+    "ytil": "workspace:^"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.0",
     "@types/ms": "^0.7.34",
     "@types/node": "^18.19.31",
+    "@types/react": "^18.2.79",
     "copyfiles": "^2.4.1",
     "rimraf": "^5.0.5",
     "tsc-alias": "^1.8.8",
     "typescript": "5.4.3"
-  }
+  },
+  "packageManager": "pnpm@8.4.0"
 }
